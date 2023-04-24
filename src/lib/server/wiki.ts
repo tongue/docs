@@ -106,7 +106,7 @@ export async function get_page(files: Map<string, string>, slug: string): Promis
 		? { display: format(new Date(git_log.latest.date), 'MMM d yyyy'), value: git_log.latest.date }
 		: { display: 'unknown', value: '' };
 	const sections: PageSection[] = create_sections(get_file(path));
-	const edit = get_file_edit_url(filename);
+	const edit = get_file_edit_url(name);
 
 	return { title, slug, author, modified, sections, edit };
 }

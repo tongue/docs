@@ -23,7 +23,7 @@ export const get_file_log = async (path: string) => {
 	}
 };
 
-export const get_file_edit_url = (filename: string) => `https://github.com/${GITHUB_PROJECT}/wiki/${encodeURIComponent(filename)}/_edit`;
+export const get_file_edit_url = (name: string) => `https://github.com/${GITHUB_PROJECT}/wiki/${encodeURIComponent(name)}/_edit`;
 
 // Get the latest version of the wiki
 export async function sync() {
