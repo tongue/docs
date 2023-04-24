@@ -75,7 +75,7 @@ h6 {
 	margin-top: 2rem;
 }
 
-/* since our h2 tags create sections and then are inside of a header tag, we need to add a selector to target them */
+/* since our h2 tags create sections we need to add a selector to target them */
 section:not(:first-child) > h2:first-child {
 	margin-top: 3.5rem;
 }
