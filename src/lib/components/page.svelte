@@ -15,6 +15,9 @@
 	};
 </script>
 
+<svelte:head>
+	<title>{title} | Alster Docs</title>
+</svelte:head>
 <article use:active_section on:activesection={on_active} class:toc={sections.length > 1}>
 	<div>
 		<header>
