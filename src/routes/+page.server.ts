@@ -4,5 +4,5 @@ import type { PageServerLoad } from './$types';
 export const load = (async ({ parent }) => {
 	const { files } = await parent();
 
-	return get_page(files, 'home');
+	return get_page(files, '');
 }) satisfies PageServerLoad;

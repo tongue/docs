@@ -4,7 +4,7 @@ import { existsSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import simpleGit, { GitError } from 'simple-git';
 import slugify from 'slugify';
-import { GITHUB_PROJECT, DATA_DIR } from '$env/static/private';
+import { GITHUB_PROJECT, DATA_DIR, WIKI_HOME } from '$env/static/private';
 
 export const REPOSITORY = resolve(DATA_DIR, `${GITHUB_PROJECT.split('/')[1]}.wiki`);
 
@@ -13,9 +13,9 @@ export const get_all_markdown_paths = () =>
 
 export const get_file = (path: string) => readFileSync(path, 'utf-8');
 
-export const get_file_log = async (path: string) => { 
+export const get_file_log = async (path: string) => {
 	try {
-		const log = await simpleGit(REPOSITORY).log({ file: path })
+		const log = await simpleGit(REPOSITORY).log({ file: path });
 		return log;
 	} catch (error) {
 		console.error(error);
@@ -23,7 +23,8 @@ export const get_file_log = async (path: string) => {
 	}
 };
 
-export const get_file_edit_url = (name: string) => `https://github.com/${GITHUB_PROJECT}/wiki/${encodeURIComponent(name)}/_edit`;
+export const get_file_edit_url = (name: string) =>
+	`https://github.com/${GITHUB_PROJECT}/wiki/${encodeURIComponent(name)}/_edit`;
 
 // Get the latest version of the wiki
 export async function sync() {
@@ -60,7 +61,8 @@ export async function sync() {
 	const files = new Map(
 		glob.sync(`${REPOSITORY}**/*.md`, { ignore: '.git/**' }).map((filename) => {
 			const name = filename.split('/').pop()?.replace('.md', '');
-			const slug = slugify(name ?? '', { strict: true, lower: true });
+			const slug =
+				name === WIKI_HOME ? '' : slugify(name ?? 'unknown', { strict: true, lower: true });
 			return [slug, filename];
 		})
 	);
