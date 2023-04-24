@@ -1,0 +1,31 @@
+:root {
+				--color-white: #fff;
+				--color-black: #000;
+}
+
+body {
+				background-color: var(--theme-bg);
+				color: var(--theme-fg);
+}
+
+@media (prefers-color-scheme: light) {
+				body {
+								--theme-bg: var(--color-white);
+								--theme-fg: var(--color-black);
+				}
+}
+@media (prefers-color-scheme: dark) {
+				body {
+								--theme-bg: var(--color-black);
+								--theme-fg: var(--color-white);
+				}
+}
+
+body.light {
+				--theme-bg: var(--color-white);
+				--theme-fg: var(--color-black);
+}
+body.dark {
+				--theme-bg: var(--color-black);
+				--theme-fg: var(--color-white);
+}

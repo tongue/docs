@@ -1,12 +1,28 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import 'prismjs/themes/prism.css';
+	import '$lib/styles/theme.css';
+	import { onMount, type SvelteComponentTyped } from 'svelte';
+	('$lib/components/theme-switcher.svelte');
+
+	let ThemeSwitcher: SvelteComponentTyped | null = null;
 
 	export let data;
+
+	onMount(async () => {
+		ThemeSwitcher = (await import(
+			'$lib/components/theme-switcher.svelte'
+		)) as unknown as SvelteComponentTyped;
+	});
 </script>
 
 <div>
 	<nav>
+		{#if ThemeSwitcher}
+			<menu>
+				<svelte:component this={ThemeSwitcher.default} />
+			</menu>
+		{/if}
 		<ul>
 			{#each data.navigation_items as item}
 				<li>
