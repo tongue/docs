@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import 'prismjs/themes/prism.css';
+	import '$lib/styles/main.css';
 	import '$lib/styles/theme.css';
 	import { onMount, type SvelteComponentTyped } from 'svelte';
 	('$lib/components/theme-switcher.svelte');

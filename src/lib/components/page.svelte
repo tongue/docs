@@ -33,9 +33,7 @@
 		{#each sections as section}
 			<section id={section.slug}>
 				{#if section.title && section.slug}
-					<header>
-						<h2 id={section.slug}><a href={`#${section.slug}`}>{section.title}</a></h2>
-					</header>
+					<h2 id={section.slug}><a href={`#${section.slug}`}>{section.title}</a></h2>
 				{/if}
 				{@html section.content}
 			</section>
