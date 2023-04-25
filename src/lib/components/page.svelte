@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { active_section } from '$lib/actions/active-section';
+	import NavigationList from './navigation-list.svelte';
 	import PageHeader from './page-header.svelte';
 
 	export let title: string;
@@ -34,8 +35,8 @@
 	{#if sections.length > 1}
 		<aside>
 			<nav>
-				<h2>Table of contents</h2>
-				<ol>
+				<h2>In this article</h2>
+				<NavigationList tag="ol">
 					{#each sections as section}
 						{#if section.title && section.slug}
 							<li>
@@ -46,7 +47,7 @@
 							</li>
 						{/if}
 					{/each}
-				</ol>
+				</NavigationList>
 			</nav>
 		</aside>
 	{/if}
@@ -55,10 +56,6 @@
 <style>
 	aside {
 		display: none;
-	}
-
-	a[aria-current='location'] {
-		font-weight: bold;
 	}
 
 	@media (min-width: 73rem) {
@@ -77,5 +74,10 @@
 	nav {
 		position: sticky;
 		top: var(--header-height);
+	}
+
+	nav > h2 {
+		font-size: 1rem;
+		margin-bottom: 1.5rem;
 	}
 </style>

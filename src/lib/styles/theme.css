@@ -1,6 +1,7 @@
 :root {
 	--color-white: #fff;
 	--color-black: #000;
+	--color-light-purple: hsla(279, 32%, 64%, 1);
 }
 
 body {
@@ -13,6 +14,7 @@ body {
 		--theme-bg: var(--color-white);
 		--theme-fg: var(--color-black);
 		--theme-border: var(--color-black);
+		--theme-accent: var(--color-light-purple);
 	}
 }
 @media (prefers-color-scheme: dark) {
@@ -20,6 +22,7 @@ body {
 		--theme-bg: var(--color-black);
 		--theme-fg: var(--color-white);
 		--theme-border: var(--color-white);
+		--theme-accent: var(--color-light-purple);
 	}
 }
 
@@ -27,11 +30,13 @@ body.light {
 	--theme-bg: var(--color-white);
 	--theme-fg: var(--color-black);
 	--theme-border: var(--color-black);
+	--theme-accent: var(--color-light-purple);
 }
 body.dark {
 	--theme-bg: var(--color-black);
 	--theme-fg: var(--color-white);
 	--theme-border: var(--color-white);
+	--theme-accent: var(--color-light-purple);
 }
 
 h1 > a,

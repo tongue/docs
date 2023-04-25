@@ -5,11 +5,12 @@
 	import '$lib/styles/theme.css';
 	import '$lib/styles/utility.css';
 	import { onMount, type SvelteComponentTyped } from 'svelte';
+	import NavigationList from '$lib/components/navigation-list.svelte';
 
 	let ThemeSwitcher: SvelteComponentTyped | null = null;
 
 	export let data;
-	export let menu_expanded = false;
+	export let menu_expanded = true;
 
 	const set_expanded = (expanded: boolean) => () => {
 		document.body.classList.toggle('noscroll', expanded);
@@ -38,19 +39,20 @@
 		{/if}
 	</menu>
 	<nav class:expanded={menu_expanded}>
-		<ul>
+		<NavigationList>
 			{#each data.navigation_items as item}
 				<li>
 					<a
 						href={`/${item.slug}`}
+						on:click={set_expanded(false)}
 						aria-current={(!$page.params.slug && item.slug === '') ||
 						$page.params.slug === item.slug
 							? 'page'
-							: undefined}>{item.title}</a
+							: undefined}>{item.title} and some more text</a
 					>
 				</li>
 			{/each}
-		</ul>
+		</NavigationList>
 	</nav>
 
 	<main>
@@ -64,10 +66,6 @@
 		max-width: var(--max-width);
 		margin: 0 auto 6rem;
 		padding: 0 var(--gutter-width);
-	}
-
-	a[aria-current='page'] {
-		font-weight: bold;
 	}
 
 	menu {
@@ -153,6 +151,7 @@
 			pointer-events: initial;
 			transition: none;
 			transform: none;
+			max-width: var(--aside-width);
 		}
 
 		main {

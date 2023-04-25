@@ -20,7 +20,6 @@ body {
 	font-family: 'Inter', sans-serif;
 	line-height: 1.5;
 	font-weight: 400;
-	font-variation-settings: 'wght' 400;
 	margin: 0;
 	padding: 0;
 }
@@ -28,7 +27,6 @@ body {
 b,
 strong {
 	font-weight: 600;
-	font-variation-settings: 'wght' 600;
 }
 
 h1,
@@ -55,7 +53,6 @@ h2,
 h3,
 h4 {
 	font-weight: 500;
-	font-variation-settings: 'wght' 500;
 }
 
 h1 {
@@ -78,7 +75,6 @@ h5,
 h6 {
 	font-size: 1.25rem;
 	font-weight: 600;
-	font-variation-settings: 'wght' 600;
 }
 
 * + h2,
@@ -120,7 +116,6 @@ blockquote {
 	font-size: 1.75rem;
 	line-height: 1, 1428571429;
 	font-weight: 400;
-	font-variation-settings: 'wght' 400;
 
 	margin: 2.5rem 0;
 }
