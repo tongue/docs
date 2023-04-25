@@ -19,7 +19,7 @@
 	<title>{title} | Alster Docs</title>
 </svelte:head>
 <article use:active_section on:activesection={on_active} class:toc={sections.length > 1}>
-	<div>
+	<div class="content">
 		<header>
 			<h1 id={slug}><a href={`#${slug}`}>{title}</a></h1>
 			<div>
@@ -61,13 +61,6 @@
 </article>
 
 <style>
-	article.toc {
-		position: relative;
-		display: grid;
-		gap: 0 1em;
-		grid-template-columns: 7fr 3fr;
-	}
-
 	header div {
 		display: flex;
 		justify-content: space-between;
@@ -88,12 +81,29 @@
 		margin-right: 1ch;
 	}
 
-	nav {
-		position: sticky;
-		top: 0;
+	aside {
+		display: none;
 	}
 
 	a[aria-current='location'] {
 		font-weight: bold;
+	}
+
+	@media (min-width: 73rem) {
+		aside {
+			display: block;
+		}
+
+		article.toc {
+			position: relative;
+			display: grid;
+			gap: 0 var(--gap-width);
+			grid-template-columns: auto var(--aside-width);
+		}
+	}
+
+	nav {
+		position: sticky;
+		top: var(--header-height);
 	}
 </style>

@@ -1,0 +1,5 @@
+@media (max-width: 55em) {
+	.noscroll {
+		overflow: hidden;
+	}
+}

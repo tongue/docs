@@ -1,8 +1,28 @@
+:root {
+	--max-width: 90rem; /* 1440px */
+	--aside-width: 17rem; /* 272px */
+	--header-height: 4rem; /* 64px */
+	--gap-width: 3rem; /* 48px */
+	--gutter-width: 1.5rem; /* 24px */
+}
+
+html {
+	box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+
 body {
 	font-family: 'Inter', sans-serif;
 	line-height: 1.5;
 	font-weight: 400;
 	font-variation-settings: 'wght' 400;
+	margin: 0;
+	padding: 0;
 }
 
 b,
@@ -98,9 +118,13 @@ h2 > a {
 
 blockquote {
 	font-size: 1.75rem;
-	line-height: 1,1428571429;
+	line-height: 1, 1428571429;
 	font-weight: 400;
 	font-variation-settings: 'wght' 400;
 
 	margin: 2.5rem 0;
+}
+
+pre {
+	overflow: scroll;
 }
