@@ -1,42 +1,61 @@
 :root {
 	--color-white: #fff;
 	--color-black: #000;
-	--color-light-purple: hsla(279, 32%, 64%, 1);
+	--purple: hsla(279, 32%, 64%, 1);
+
+	--grayish: hsla(210, 2%, 34%, 1);
+
+	--white-85: hsla(0, 0%, 85%, 1);
+	--white-93: hsla(0, 0%, 93%, 1);
+	--white-95: hsla(0, 0%, 95%, 1);
+	--white-98: hsla(0, 0%, 98%, 1);
+
+	--black-23: hsla(0, 0%, 23%, 1);
+	
+	--dark-2: hsla(220, 33%, 2%, 1);
+	--dark-7: hsla(220, 29%, 7%, 1);
+	--dark-71: hsla(220, 2%, 71%, 1);
+	
+	--darkish-9: hsla(222, 28%, 9%, 1);
+	--darkish-16: hsla(222, 18%, 16%, 1);
+
+	--mork: hsla(216, 15%, 6%, 1);
 }
 
-body {
+body,
+body.light {
+	--theme-bg: var(--white-98);
+	--theme-fg: var(--mork);
+	--theme-stroke: var(--white-85);
+	--theme-accent: var(--purple);
+	--theme-nav-gradient-start: var(--white-98);
+	--theme-nav-gradient-end: var(--white-95);
+	--theme-body: var(--grayish); 
+
 	background-color: var(--theme-bg);
 	color: var(--theme-fg);
 }
 
-@media (prefers-color-scheme: light) {
-	body {
-		--theme-bg: var(--color-white);
-		--theme-fg: var(--color-black);
-		--theme-border: var(--color-black);
-		--theme-accent: var(--color-light-purple);
-	}
-}
 @media (prefers-color-scheme: dark) {
 	body {
-		--theme-bg: var(--color-black);
-		--theme-fg: var(--color-white);
-		--theme-border: var(--color-white);
-		--theme-accent: var(--color-light-purple);
+		--theme-bg: var(--dark-7);
+		--theme-fg: var(--white-98);
+		--theme-stroke: var(--black-23);
+		--theme-accent: var(--purple);
+		--theme-nav-gradient-start: var(--darkish-9);
+		--theme-nav-gradient-end: var(--darkish-16);
+		--theme-body: var(--dark-71);
 	}
 }
 
-body.light {
-	--theme-bg: var(--color-white);
-	--theme-fg: var(--color-black);
-	--theme-border: var(--color-black);
-	--theme-accent: var(--color-light-purple);
-}
 body.dark {
-	--theme-bg: var(--color-black);
-	--theme-fg: var(--color-white);
-	--theme-border: var(--color-white);
-	--theme-accent: var(--color-light-purple);
+		--theme-bg: var(--dark-7);
+		--theme-fg: var(--white-98);
+		--theme-stroke: var(--black-23);
+		--theme-accent: var(--purple);
+		--theme-nav-gradient-start: var(--darkish-9);
+		--theme-nav-gradient-end: var(--darkish-16);
+		--theme-body: var(--dark-71);
 }
 
 h1 > a,
@@ -45,5 +64,13 @@ h3 > a,
 h4 > a,
 h5 > a,
 h6 > a {
+	color: var(--theme-fg);
+}
+
+p {
+	color: var(--theme-body);
+}
+
+p:has(strong:only-child) {
 	color: var(--theme-fg);
 }

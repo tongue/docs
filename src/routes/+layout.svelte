@@ -104,6 +104,8 @@
 		background: var(--theme-bg);
 		transition: transform 100ms ease-out;
 
+		border-right: 1px solid var(--theme-stroke);
+
 		padding-top: var(--top-gutter);
 	}
 

@@ -29,7 +29,7 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		border-top: 1px solid var(--theme-border);
+		border-top: 1px solid var(--theme-stroke);
 	}
 
 	ul {
