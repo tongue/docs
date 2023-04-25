@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { active_section } from '$lib/actions/active-section';
+	import PageHeader from './page-header.svelte';
 
 	export let title: string;
 	export let slug: string;
@@ -20,16 +21,7 @@
 </svelte:head>
 <article use:active_section on:activesection={on_active} class:toc={sections.length > 1}>
 	<div class="content">
-		<header>
-			<h1 id={slug}><a href={`#${slug}`}>{title}</a></h1>
-			<div>
-				<ul class="byline">
-					<li>Edited <time datetime={modified.value}>{modified.display}</time></li>
-					<li>{author}</li>
-				</ul>
-				<a href={edit}>Edit page</a>
-			</div>
-		</header>
+		<PageHeader {slug} {author} {modified} {edit}>{title}</PageHeader>
 		{#each sections as section}
 			<section id={section.slug}>
 				{#if section.title && section.slug}
@@ -61,26 +53,6 @@
 </article>
 
 <style>
-	header div {
-		display: flex;
-		justify-content: space-between;
-		align-items: baseline;
-	}
-
-	ul {
-		display: flex;
-		align-items: baseline;
-		padding: 0;
-		margin: 0;
-		gap: 1ch;
-		list-style: none;
-	}
-
-	ul li:not(:first-child)::before {
-		content: '•';
-		margin-right: 1ch;
-	}
-
 	aside {
 		display: none;
 	}

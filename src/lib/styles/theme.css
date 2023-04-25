@@ -12,22 +12,26 @@ body {
 	body {
 		--theme-bg: var(--color-white);
 		--theme-fg: var(--color-black);
+		--theme-border: var(--color-black);
 	}
 }
 @media (prefers-color-scheme: dark) {
 	body {
 		--theme-bg: var(--color-black);
 		--theme-fg: var(--color-white);
+		--theme-border: var(--color-white);
 	}
 }
 
 body.light {
 	--theme-bg: var(--color-white);
 	--theme-fg: var(--color-black);
+	--theme-border: var(--color-black);
 }
 body.dark {
 	--theme-bg: var(--color-black);
 	--theme-fg: var(--color-white);
+	--theme-border: var(--color-white);
 }
 
 h1 > a,
