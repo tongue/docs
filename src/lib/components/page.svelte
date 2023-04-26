@@ -73,7 +73,7 @@
 
 	nav {
 		position: sticky;
-		top: var(--header-height);
+		top: calc(var(--header-height) + var(--top-gutter));
 	}
 
 	nav > h2 {
