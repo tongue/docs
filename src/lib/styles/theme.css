@@ -22,6 +22,44 @@
 	--hmm: hsla(226, 29%, 14%, 1);
 
 	--mork: hsla(216, 15%, 6%, 1);
+
+	--blueish-dark: hsla(228, 28%, 5%, 1);
+	--blueish: hsla(226, 29%, 7%, 1);
+	--blueish-light: hsla(226, 29%, 14%, 1);
+
+	--gray: hsla(0, 0%, 23%, 1);
+}
+
+:root {
+	--rp-surface: hsl(247deg, 23%, 15%);
+	--rp-overlay: hsl(248deg, 25%, 18%);
+	--rp-muted: hsl(249deg, 12%, 47%);
+	--rp-subtle: hsl(248deg, 15%, 61%);
+	--rp-text: hsl(245deg, 50%, 91%);
+	--rp-love: hsl(343deg, 76%, 68%);
+	--rp-gold: hsl(35deg, 88%, 72%);
+	--rp-rose: hsl(2deg, 55%, 83%);
+	--rp-pine: hsl(197deg, 49%, 38%);
+	--rp-foam: hsl(189deg, 43%, 73%);
+	--rp-iris: hsl(267deg, 57%, 78%);
+	--rp-highlight-low: hsl(244deg, 18%, 15%);
+	--rp-highlight-med: hsl(249deg, 15%, 28%);
+	--rp-highlight-high: hsl(248deg, 13%, 36%);
+
+	--rp-dawn-surface: hsl(35deg, 100%, 98%);
+	--rp-dawn-overlay: hsl(33deg, 43%, 91%);
+	--rp-dawn-muted: hsl(257deg, 9%, 61%);
+	--rp-dawn-subtle: hsl(248deg, 12%, 52%);
+	--rp-dawn-text: hsl(248deg, 19%, 40%);
+	--rp-dawn-love: hsl(343deg, 35%, 55%);
+	--rp-dawn-gold: hsl(35deg, 81%, 56%);
+	--rp-dawn-rose: hsl(3deg, 53%, 67%);
+	--rp-dawn-pine: hsl(197deg, 53%, 34%);
+	--rp-dawn-foam: hsl(189deg, 30%, 48%);
+	--rp-dawn-iris: hsl(268deg, 21%, 57%);
+	--rp-dawn-highlight-low: hsl(25deg, 35%, 93%);
+	--rp-dawn-highlight-med: hsl(10deg, 9%, 86%);
+	--rp-dawn-highlight-high: hsl(315deg, 4%, 80%);
 }
 
 body,
@@ -36,6 +74,22 @@ body.light {
 	--theme-panel: var(--white-93);
 	--theme-track: var(--white-98);
 
+	--code-base: var(--white-93);
+	--code-surface: var(--rp-dawn-surface);
+	--code-overlay: var(--rp-dawn-overlay);
+	--code-muted: var(--rp-dawn-muted);
+	--code-subtle: var(--rp-dawn-subtle);
+	--code-text: var(--rp-dawn-text);
+	--code-love: var(--rp-dawn-love);
+	--code-gold: var(--rp-dawn-gold);
+	--code-rose: var(--rp-dawn-rose);
+	--code-pine: var(--rp-dawn-pine);
+	--code-foam: var(--rp-dawn-foam);
+	--code-iris: var(--rp-dawn-iris);
+	--code-highlight-low: var(--rp-dawn-highlight-low);
+	--code-highlight-med: var(--rp-dawn-highlight-med);
+	--code-highlight-high: var(--rp-dawn-highlight-high);
+
 	background-color: var(--theme-bg);
 	color: var(--theme-fg);
 
@@ -44,28 +98,60 @@ body.light {
 
 @media (prefers-color-scheme: dark) {
 	body {
-		--theme-bg: var(--dark-7);
+		--theme-bg: var(--blueish);
 		--theme-fg: var(--white-98);
-		--theme-stroke: var(--black-23);
+		--theme-stroke: var(--gray);
 		--theme-accent: var(--purple);
 		--theme-nav-gradient-start: var(--darkish-9);
 		--theme-nav-gradient-end: var(--darkish-16);
 		--theme-body: var(--dark-71);
-		--theme-panel: var(--dark-2);
-		--theme-track: var(--hmm);
+		--theme-panel: var(--blueish-dark);
+		--theme-track: var(--blueish-light);
+
+		--code-base: var(--blueish-light);
+		--code-surface: var(--rp-surface);
+		--code-overlay: var(--rp-overlay);
+		--code-muted: var(--rp-muted);
+		--code-subtle: var(--rp-subtle);
+		--code-text: var(--rp-text);
+		--code-love: var(--rp-love);
+		--code-gold: var(--rp-gold);
+		--code-rose: var(--rp-rose);
+		--code-pine: var(--rp-pine);
+		--code-foam: var(--rp-foam);
+		--code-iris: var(--rp-iris);
+		--code-highlight-low: var(--rp-highlight-low);
+		--code-highlight-med: var(--rp-highlight-med);
+		--code-highlight-high: var(--rp-highlight-high);
 	}
 }
 
 body.dark {
-	--theme-bg: var(--dark-7);
+	--theme-bg: var(--blueish);
 	--theme-fg: var(--white-98);
-	--theme-stroke: var(--black-23);
+	--theme-stroke: var(--gray);
 	--theme-accent: var(--purple);
 	--theme-nav-gradient-start: var(--darkish-9);
 	--theme-nav-gradient-end: var(--darkish-16);
 	--theme-body: var(--dark-71);
-	--theme-panel: var(--dark-2);
-	--theme-track: var(--hmm);
+	--theme-panel: var(--blueish-dark);
+	--theme-track: var(--blueish-light);
+
+	--code-base: var(--blueish-light);
+	--code-surface: var(--rp-surface);
+	--code-overlay: var(--rp-overlay);
+	--code-muted: var(--rp-muted);
+	--code-subtle: var(--rp-subtle);
+	--code-text: var(--rp-text);
+	--code-love: var(--rp-love);
+	--code-gold: var(--rp-gold);
+	--code-rose: var(--rp-rose);
+	--code-pine: var(--rp-pine);
+	--code-foam: var(--rp-foam);
+	--code-iris: var(--rp-iris);
+	--code-highlight-low: var(--rp-highlight-low);
+	--code-highlight-med: var(--rp-highlight-med);
+	--code-highlight-high: var(--rp-highlight-high);
 }
 
 h1 > a,
@@ -82,5 +168,9 @@ p {
 }
 
 p:has(strong:only-child) {
+	color: var(--theme-fg);
+}
+
+blockquote p {
 	color: var(--theme-fg);
 }

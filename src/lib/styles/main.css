@@ -25,8 +25,7 @@ body {
 	font-weight: 400;
 	margin: 0;
 	padding: 0;
-	overscroll-behavior-y: none;
-	overscroll-behavior-x: none;
+	overscroll-behavior: none;
 }
 
 b,
@@ -126,5 +125,6 @@ blockquote {
 }
 
 pre {
+	margin-top: 3rem;
 	overflow: scroll;
 }
