@@ -1,10 +1,9 @@
 <script lang="ts">
 	import { SvelteComponentTyped, onMount } from 'svelte';
 	import { page } from '$app/stores';
-	import '$lib/styles/main.css';
 	import '$lib/styles/theme.css';
+	import '$lib/styles/main.css';
 	import '$lib/styles/utility.css';
-	import '$lib/styles/code.css';
 	import NavigationList from '$lib/components/navigation-list.svelte';
 	import { is_large_screen, menu_expanded } from '$lib/app.js';
 

@@ -20,7 +20,7 @@
 <svelte:head>
 	<title>{title} | Alster Docs</title>
 </svelte:head>
-<article use:active_section on:activesection={on_active} class:toc={sections.length > 1}>
+<article use:active_section on:activesection={on_active}>
 	<div class="content">
 		<PageHeader {slug} {author} {modified} {edit}>{title}</PageHeader>
 		{#each sections as section}
@@ -63,7 +63,7 @@
 			display: block;
 		}
 
-		article.toc {
+		article {
 			position: relative;
 			display: grid;
 			gap: 0 var(--gap-width);

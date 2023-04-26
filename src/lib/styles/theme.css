@@ -73,6 +73,7 @@ body.light {
 	--theme-body: var(--grayish);
 	--theme-panel: var(--white-93);
 	--theme-track: var(--white-98);
+	--theme-card: var(--white-93);
 
 	--code-base: var(--white-93);
 	--code-surface: var(--rp-dawn-surface);
@@ -107,6 +108,7 @@ body.light {
 		--theme-body: var(--dark-71);
 		--theme-panel: var(--blueish-dark);
 		--theme-track: var(--blueish-light);
+		--theme-card: var(--blueish-light);
 
 		--code-base: var(--blueish-light);
 		--code-surface: var(--rp-surface);
@@ -136,6 +138,7 @@ body.dark {
 	--theme-body: var(--dark-71);
 	--theme-panel: var(--blueish-dark);
 	--theme-track: var(--blueish-light);
+	--theme-card: var(--blueish-light);
 
 	--code-base: var(--blueish-light);
 	--code-surface: var(--rp-surface);

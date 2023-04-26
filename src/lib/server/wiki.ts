@@ -28,6 +28,11 @@ type Page = PageMeta & {
 	edit: string;
 };
 
+type HomePage = {
+	body: string;
+	cards: string[];
+}
+
 function create_section(heading: Heading) {
 	const title = heading.children[0].type === 'text' ? heading.children[0].value : ''; // TODO: Should probably traverse the tree until we find another text node
 	return { title, slug: encodeURI(title.replaceAll(' ', '-')), content: '' };
@@ -110,4 +115,36 @@ export async function get_page(files: Map<string, string>, slug: string): Promis
 	const edit = get_file_edit_url(name);
 
 	return { title, slug, author, modified, sections, edit };
+}
+
+export async function get_home(files: Map<string, string>): Promise<HomePage> {
+	const path = files.get("");
+	if (!path) throw new Error('Found no home page');
+	const filename = path.split('/').pop();
+	if (!filename) throw new Error(`Could not extract filename: ${path}`);
+	const name = filename.replace('.md', '');
+	if (!name) throw new Error(`Could not extract name without suffix: ${filename}`);
+
+	const mdast = fromMarkdown(get_file(path), {
+		extensions: [gfm()],
+		mdastExtensions: [gfmFromMarkdown()]
+	});
+
+	return mdast.children.reduce<{ body: string, cards: string[] }>(
+		(acc, child) => {
+			if (child.type === 'heading' && child.depth === 3) {
+				acc.cards.push(create_html_block(child));
+				return acc;
+			}
+
+			if (acc.cards.length === 0) {
+				acc.body += create_html_block(child);
+				return acc;
+			}
+
+			acc.cards[acc.cards.length - 1] += create_html_block(child);
+			return acc;
+		},
+		{ body: '', cards: [] }
+	);
 }

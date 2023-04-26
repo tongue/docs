@@ -1,8 +1,8 @@
-import { get_page } from '$lib/server/wiki';
+import { get_home } from '$lib/server/wiki';
 import type { PageServerLoad } from './$types';
 
 export const load = (async ({ parent }) => {
 	const { files } = await parent();
 
-	return get_page(files, '');
+	return get_home(files);
 }) satisfies PageServerLoad;
