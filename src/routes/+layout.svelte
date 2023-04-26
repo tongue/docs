@@ -62,7 +62,7 @@
 						aria-current={(!$page.params.slug && item.slug === '') ||
 						$page.params.slug === item.slug
 							? 'page'
-							: undefined}>{item.title} and some more text</a
+							: undefined}>{item.title}</a
 					>
 				</li>
 			{/each}
@@ -202,6 +202,10 @@
 			transform: none;
 			max-width: var(--aside-width);
 			background: unset;
+		}
+
+		li:first-child {
+			font-size: 1.25rem;
 		}
 
 		main {
