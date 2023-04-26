@@ -21,13 +21,14 @@
 	ol :global(> li > a) {
 		position: relative;
 		display: inline-block;
-		padding: 0.5rem 0 0.5rem 1.5rem;
+		padding: 0.5rem 1.5rem;
 		color: var(--theme-fg);
 		text-decoration: none;
 	}
 
 	ul :global(> li > a) {
 		font-weight: 500;
+		width: 100%;
 	}
 
 	ol :global(> li > a) {
