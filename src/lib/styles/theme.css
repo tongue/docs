@@ -11,13 +11,15 @@
 	--white-98: hsla(0, 0%, 98%, 1);
 
 	--black-23: hsla(0, 0%, 23%, 1);
-	
+
 	--dark-2: hsla(220, 33%, 2%, 1);
 	--dark-7: hsla(220, 29%, 7%, 1);
 	--dark-71: hsla(220, 2%, 71%, 1);
-	
+
 	--darkish-9: hsla(222, 28%, 9%, 1);
 	--darkish-16: hsla(222, 18%, 16%, 1);
+
+	--hmm: hsla(226, 29%, 14%, 1);
 
 	--mork: hsla(216, 15%, 6%, 1);
 }
@@ -30,11 +32,14 @@ body.light {
 	--theme-accent: var(--purple);
 	--theme-nav-gradient-start: var(--white-98);
 	--theme-nav-gradient-end: var(--white-95);
-	--theme-body: var(--grayish); 
+	--theme-body: var(--grayish);
 	--theme-panel: var(--white-93);
+	--theme-track: var(--white-98);
 
 	background-color: var(--theme-bg);
 	color: var(--theme-fg);
+
+	transition: background-color var(--color-transition-duration) ease;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -47,18 +52,20 @@ body.light {
 		--theme-nav-gradient-end: var(--darkish-16);
 		--theme-body: var(--dark-71);
 		--theme-panel: var(--dark-2);
+		--theme-track: var(--hmm);
 	}
 }
 
 body.dark {
-		--theme-bg: var(--dark-7);
-		--theme-fg: var(--white-98);
-		--theme-stroke: var(--black-23);
-		--theme-accent: var(--purple);
-		--theme-nav-gradient-start: var(--darkish-9);
-		--theme-nav-gradient-end: var(--darkish-16);
-		--theme-body: var(--dark-71);
-		--theme-panel: var(--dark-2);
+	--theme-bg: var(--dark-7);
+	--theme-fg: var(--white-98);
+	--theme-stroke: var(--black-23);
+	--theme-accent: var(--purple);
+	--theme-nav-gradient-start: var(--darkish-9);
+	--theme-nav-gradient-end: var(--darkish-16);
+	--theme-body: var(--dark-71);
+	--theme-panel: var(--dark-2);
+	--theme-track: var(--hmm);
 }
 
 h1 > a,

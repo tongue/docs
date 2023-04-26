@@ -5,6 +5,8 @@
 	--gap-width: 3rem; /* 48px */
 	--gutter-width: 1.5rem; /* 24px */
 	--top-gutter: 3rem; /* 48px */
+
+	--color-transition-duration: 100ms;
 }
 
 html {

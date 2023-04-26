@@ -1,21 +1,15 @@
 <script lang="ts">
+	import { SvelteComponentTyped, onMount } from 'svelte';
 	import { page } from '$app/stores';
 	import 'prismjs/themes/prism.css';
 	import '$lib/styles/main.css';
 	import '$lib/styles/theme.css';
 	import '$lib/styles/utility.css';
-	import { onMount, type SvelteComponentTyped } from 'svelte';
 	import NavigationList from '$lib/components/navigation-list.svelte';
-
-	let ThemeSwitcher: SvelteComponentTyped | null = null;
+	import { is_large_screen, menu_expanded } from '$lib/app.js';
 
 	export let data;
-	export let menu_expanded = true;
-
-	const set_expanded = (expanded: boolean) => () => {
-		document.body.classList.toggle('noscroll', expanded);
-		menu_expanded = expanded;
-	};
+	let ThemeSwitcher: SvelteComponentTyped | null = null;
 
 	onMount(async () => {
 		ThemeSwitcher = (await import(
@@ -25,26 +19,46 @@
 </script>
 
 <div class="layout">
-	<menu class:expanded={menu_expanded}>
-		{#if menu_expanded}
-			<button on:click={set_expanded(false)}>Close</button>
+	<menu class:expanded={!$is_large_screen && $menu_expanded}>
+		<a href="/" class="logo"><span class="visually-hidden">Home</span></a>
+
+		{#if $menu_expanded}
+			<button
+				id="menu-button"
+				class="menu-toggle"
+				aria-haspopup="menu"
+				aria-controls="wiki-articles"
+				aria-expanded={true}
+				on:click={menu_expanded.set(false)}>Close</button
+			>
 		{:else}
-			<button on:click={set_expanded(true)}>Menu</button>
+			<button
+				id="menu-button"
+				class="menu-toggle"
+				aria-haspopup="menu"
+				aria-controls="wiki-articles"
+				on:click={menu_expanded.set(true)}>Menu</button
+			>
 		{/if}
 
 		{#if ThemeSwitcher}
-			<div>
+			<div class="theme-switcher">
 				<svelte:component this={ThemeSwitcher.default} />
 			</div>
 		{/if}
 	</menu>
-	<nav class:expanded={menu_expanded}>
+
+	<nav
+		id="wiki-articles"
+		aria-labelledby="menu-button"
+		aria-hidden={!$is_large_screen && !$menu_expanded ? true : undefined}
+	>
 		<NavigationList>
 			{#each data.navigation_items as item}
 				<li>
 					<a
 						href={`/${item.slug}`}
-						on:click={set_expanded(false)}
+						on:click={menu_expanded.set(false)}
 						aria-current={(!$page.params.slug && item.slug === '') ||
 						$page.params.slug === item.slug
 							? 'page'
@@ -75,18 +89,41 @@
 		margin: 0;
 		padding: 0;
 		justify-content: space-between;
+		align-items: center;
 		background: var(--theme-panel);
+
+		transition: background var(--color-transition-duration) ease-in-out;
 	}
 
-	menu.expanded {
+	.expanded {
 		width: calc(100vw - var(--gutter-width) * 2);
 	}
 
-	menu > * + * {
+	.logo {
+		display: none;
+		width: 1.8125rem;
+		height: 1.5rem;
+		background-image: var(--logo);
+	}
+
+	.logo,
+	:global(.light) .logo {
+		--logo: url('/logo-alster.svg');
+	}
+	@media (prefers-color-scheme: dark) {
+		.logo {
+			--logo: url('/logo-alster_inverted.svg');
+		}
+	}
+	:global(.dark) .logo {
+		--logo: url('/logo-alster_inverted.svg');
+	}
+
+	.theme-switcher {
 		display: none;
 	}
 
-	menu.expanded > * + * {
+	menu.expanded .theme-switcher {
 		display: initial;
 	}
 
@@ -98,20 +135,19 @@
 		bottom: 0;
 		z-index: 5;
 
-		transform: translateX(-100%);
-		pointer-events: none;
-		background: var(--theme-bg);
-		transition: transform 100ms ease-out;
-
 		border-right: 1px solid var(--theme-stroke);
-
 		padding-top: var(--top-gutter);
-	}
-
-	nav.expanded {
+		background: var(--theme-bg);
 		transform: translateX(0);
+
 		pointer-events: initial;
 		transition: transform 200ms ease-in;
+	}
+
+	nav[aria-hidden='true'] {
+		transition: transform 100ms ease-out;
+		transform: translateX(-100%);
+		pointer-events: none;
 	}
 
 	main {
@@ -139,6 +175,8 @@
 			right: 0;
 			height: var(--header-height);
 			background: var(--theme-panel);
+
+			transition: background var(--color-transition-duration) ease-in-out;
 		}
 
 		menu,
@@ -146,17 +184,15 @@
 			position: sticky;
 			top: 0;
 			grid-area: menu;
-			justify-content: flex-end;
 			width: auto;
-			align-items: center;
 		}
 
-		menu > * + * {
+		.logo,
+		.theme-switcher {
 			display: initial;
 		}
 
-		nav,
-		nav.expanded {
+		nav {
 			top: var(--header-height);
 			right: unset;
 			left: unset;
@@ -165,6 +201,7 @@
 			transition: none;
 			transform: none;
 			max-width: var(--aside-width);
+			background: unset;
 		}
 
 		main {
