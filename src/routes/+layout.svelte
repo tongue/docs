@@ -62,7 +62,6 @@
 
 <style>
 	.layout {
-		--top-gutter: 3rem;
 		max-width: var(--max-width);
 		margin: 0 auto 6rem;
 		padding: 0 var(--gutter-width);
@@ -121,7 +120,7 @@
 
 	@media (min-width: 55em) {
 		.layout {
-			--top-gutter: 0;
+			--top-gutter: 2rem;
 			display: grid;
 			grid-template-columns: var(--aside-width) auto;
 			grid-template-rows: var(--header-height) auto;
@@ -149,6 +148,7 @@
 			grid-area: menu;
 			justify-content: flex-end;
 			width: auto;
+			align-items: center;
 		}
 
 		menu > * + * {
