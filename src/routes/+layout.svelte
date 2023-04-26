@@ -76,7 +76,7 @@
 		margin: 0;
 		padding: 0;
 		justify-content: space-between;
-		background: var(--theme-bg);
+		background: var(--theme-panel);
 	}
 
 	menu.expanded {
@@ -129,6 +129,17 @@
 				'menu menu'
 				'nav main';
 			gap: 0 var(--gap-width);
+		}
+
+		.layout::before {
+			content: '';
+			display: block;
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			height: var(--header-height);
+			background: var(--theme-panel);
 		}
 
 		menu,
