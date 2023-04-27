@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { theme } from '$lib/app';
+	let clazz = '';
+	export { clazz as class };
 
 	const on_change = (event: Event) => {
 		const target = event.target as HTMLInputElement;
@@ -8,7 +10,7 @@
 	};
 </script>
 
-<label>
+<label class={clazz}>
 	<input
 		name="theme"
 		type="checkbox"

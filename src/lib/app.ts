@@ -8,7 +8,7 @@ function create_menu_expanded() {
 		document.body.classList.toggle('noscroll', value);
 		const main = document.querySelector('main');
 		if (main) main.inert = value;
-	};
+	}
 
 	function set_expanded(expanded: boolean) {
 		return () => {
@@ -23,7 +23,7 @@ function create_menu_expanded() {
 			make_inert(!expanded);
 			return !expanded;
 		});
-	};
+	}
 
 	return {
 		subscribe,
@@ -74,7 +74,7 @@ function create_theme() {
 		document.body.classList.toggle('light', theme === 'light');
 		document.body.classList.toggle('dark', theme === 'dark');
 		localStorage.setItem(STORAGE_KEY, theme);
-	};
+	}
 
 	set_theme(get_preferred_theme());
 
