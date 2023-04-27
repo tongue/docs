@@ -23,6 +23,9 @@ export const get_file_log = async (path: string) => {
 	}
 };
 
+export const to_slug = (value?: string | null) =>
+	slugify(value ?? 'unknown', { strict: true, lower: true });
+
 export const get_file_edit_url = (name: string) =>
 	`https://github.com/${GITHUB_PROJECT}/wiki/${encodeURIComponent(name)}/_edit`;
 
@@ -61,8 +64,7 @@ export async function sync() {
 	const files = new Map(
 		glob.sync(`${REPOSITORY}**/*.md`, { ignore: '.git/**' }).map((filename) => {
 			const name = filename.split('/').pop()?.replace('.md', '');
-			const slug =
-				name === WIKI_HOME ? '' : slugify(name ?? 'unknown', { strict: true, lower: true });
+			const slug = name === WIKI_HOME ? '' : to_slug(name);
 			return [slug, filename];
 		})
 	);
