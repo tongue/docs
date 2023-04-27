@@ -5,12 +5,12 @@
 	--gap-width: 3rem; /* 48px */
 	--gutter-width: 1.5rem; /* 24px */
 	--top-gutter: 3rem; /* 48px */
-
 	--color-transition-duration: 100ms;
 }
 
 html {
 	box-sizing: border-box;
+	scroll-padding-top: var(--header-height);
 }
 
 *,
@@ -120,7 +120,6 @@ blockquote {
 	font-size: 1.75rem;
 	line-height: 1.1428571429;
 	font-weight: 400;
-
 	margin: 2.5rem 0;
 }
 
