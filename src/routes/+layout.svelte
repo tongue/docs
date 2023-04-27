@@ -33,16 +33,16 @@
 		</NavigationList>
 	</nav>
 	<menu>
-		<a href="/" class="logo"><span class="visually-hidden">Home</span></a>
-		<ButtonMenuToggle
-			class={'button-menu-toggle'}
-			on:click={$menu_expanded ? menu_expanded.set(false) : menu_expanded.set(true)}
-			open={$menu_expanded}
-		/>
-
-		<ThemeSwitcher class={`theme-switcher${!$menu_expanded ? ' hidden' : ''}`} />
+		<section>
+			<a href="/" class="logo"><span class="visually-hidden">Home</span></a>
+			<ButtonMenuToggle
+				class={'button-menu-toggle'}
+				on:click={$menu_expanded ? menu_expanded.set(false) : menu_expanded.set(true)}
+				open={$menu_expanded}
+			/>
+			<ThemeSwitcher class={`theme-switcher${!$menu_expanded ? ' hidden' : ''}`} />
+		</section>
 	</menu>
-
 	<main>
 		<slot />
 	</main>
@@ -51,7 +51,7 @@
 <style>
 	.layout {
 		max-width: var(--max-width);
-		margin: 0 auto 6rem;
+		margin: 0 auto;
 		padding: 0 var(--gutter-width);
 	}
 
@@ -63,7 +63,7 @@
 		bottom: 0;
 		z-index: 5;
 
-		border-right: 1px solid var(--theme-stroke);
+		border-right: 0.25rem solid var(--theme-panel);
 		padding-top: var(--top-gutter);
 		background: var(--theme-bg);
 		transform: translateX(0);
@@ -82,18 +82,24 @@
 		position: fixed;
 		bottom: var(--gutter-width);
 		z-index: 10;
-		display: flex;
 		margin: 0;
-		padding: 0 1.5rem;
-		justify-content: space-between;
-		align-items: center;
+		padding: 0;
 		background: var(--theme-panel);
 		width: calc(100vw - var(--gutter-width) * 2);
-		height: 4rem;
 
 		transition-property: background, width;
 		transition-duration: var(--color-transition-duration), 380ms;
 		transition-timing-function: var(--ease) var(--ease-out);
+	}
+
+	section {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		max-width: var(--max-width);
+		margin: 0 auto;
+		padding: 0 1.5rem;
+		height: 4rem;
 	}
 
 	nav[aria-hidden='true'] + menu {
@@ -157,22 +163,11 @@
 			gap: 0 var(--gap-width);
 		}
 
-		.layout::before {
-			content: '';
-			display: block;
-			position: fixed;
+		menu {
 			top: 0;
 			left: 0;
 			right: 0;
-			height: var(--header-height);
-			background: var(--theme-panel);
-
-			transition: background var(--color-transition-duration) ease-in-out;
-		}
-
-		menu {
-			position: sticky;
-			top: 0;
+			bottom: unset;
 			grid-area: menu;
 			width: auto;
 		}
@@ -192,6 +187,7 @@
 		}
 
 		nav {
+			position: static;
 			top: var(--header-height);
 			right: unset;
 			left: unset;
@@ -203,12 +199,20 @@
 			background: unset;
 		}
 
+		nav :global(ul) {
+			position: sticky;
+			top: calc(var(--header-height) + var(--top-gutter));
+			max-height: calc(100vh - (2 * var(--header-height)));
+			overflow: auto;
+		}
+
 		li:first-child {
 			font-size: 1.25rem;
 		}
 
 		main {
 			grid-area: main;
+			margin-bottom: 6rem;
 		}
 	}
 </style>

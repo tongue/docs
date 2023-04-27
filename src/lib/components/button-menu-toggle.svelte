@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	let clazz = '';
 	export { clazz as class };
 	export let open = false;
