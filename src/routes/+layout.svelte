@@ -1,20 +1,13 @@
 <script lang="ts">
-	import { SvelteComponentTyped, onMount } from 'svelte';
 	import { page } from '$app/stores';
 	import '$lib/styles/theme.css';
 	import '$lib/styles/main.css';
 	import '$lib/styles/utility.css';
 	import NavigationList from '$lib/components/navigation-list.svelte';
+	import ThemeSwitcher from '$lib/components/theme-switcher.svelte';
 	import { is_large_screen, menu_expanded } from '$lib/app.js';
 
 	export let data;
-	let ThemeSwitcher: SvelteComponentTyped | null = null;
-
-	onMount(async () => {
-		ThemeSwitcher = (await import(
-			'$lib/components/theme-switcher.svelte'
-		)) as unknown as SvelteComponentTyped;
-	});
 </script>
 
 <div class="layout">
@@ -60,11 +53,7 @@
 			>
 		{/if}
 
-		{#if ThemeSwitcher}
-			<div class="theme-switcher">
-				<svelte:component this={ThemeSwitcher.default} />
-			</div>
-		{/if}
+		<ThemeSwitcher />
 	</menu>
 
 	<main>
