@@ -1,4 +1,4 @@
-<script lang="ts">
+<script>
 	let clazz = '';
 	export { clazz as class };
 	export let open = false;
@@ -15,9 +15,10 @@
 		all: unset;
 		display: flex;
 		align-items: end;
-		--a-speed: 400ms;
-		--a-ease-on: var(--ease);
-		--a-ease-off: ease-in-out;
+		--a-speed: 300ms;
+		--a-speed-off: 320ms;
+		--a-ease-on: var(--ease-in);
+		--a-ease-off: var(--ease-in);
 
 		--block-size: 0.75em;
 		--block-size-double: calc(var(--block-size) * 2);
@@ -45,7 +46,7 @@
 	}
 
 	.off_a {
-		animation: toggle_off_a var(--a-speed) var(--a-ease-off) forwards;
+		animation: toggle_off_a var(--a-speed-off) var(--a-ease-off) forwards;
 	}
 
 	.on_b {
@@ -53,7 +54,7 @@
 	}
 
 	.off_b {
-		animation: toggle_off_b var(--a-speed) var(--a-ease-off) forwards;
+		animation: toggle_off_b var(--a-speed-off) var(--a-ease-off) forwards;
 	}
 
 	@keyframes toggle_on_a {
@@ -80,11 +81,11 @@
 			height: var(--block-size-double);
 			transform: rotate(45deg) translate(30%, -18%) scaleX(0.35);
 		}
-		20% {
+		60% {
 			height: var(--block-size-double);
-			transform: rotate(45deg) translate(30%, -18%) scaleX(1);
+			transform: rotate(45deg) translate(30%, -18%) scaleX(0.35);
 		}
-		50% {
+		80% {
 			height: var(--block-size);
 			transform: rotate(45deg) translate(0, 0) scaleX(1);
 		}
@@ -113,11 +114,11 @@
 		100% {
 			transform: rotate(-22deg);
 		}
-		50% {
+		80% {
 			transform: rotate(-45deg) translate(0, 0) scaleX(1);
 		}
-		20% {
-			transform: rotate(-45deg) translate(-30%, -18%) scaleX(1);
+		60% {
+			transform: rotate(-45deg) translate(-30%, -18%) scaleX(0.35);
 		}
 		0% {
 			transform: rotate(-45deg) translate(-30%, -18%) scaleX(0.35);
