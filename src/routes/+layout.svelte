@@ -51,7 +51,7 @@
 <style>
 	.layout {
 		max-width: var(--max-width);
-		margin: 0 auto 6rem;
+		margin: 0 auto;
 		padding: 0 var(--gutter-width);
 	}
 
@@ -63,7 +63,7 @@
 		bottom: 0;
 		z-index: 5;
 
-		border-right: 1px solid var(--theme-stroke);
+		border-right: 0.25rem solid var(--theme-panel);
 		padding-top: var(--top-gutter);
 		background: var(--theme-bg);
 		transform: translateX(0);
@@ -187,6 +187,7 @@
 		}
 
 		nav {
+			position: static;
 			top: var(--header-height);
 			right: unset;
 			left: unset;
@@ -198,12 +199,20 @@
 			background: unset;
 		}
 
+		nav :global(ul) {
+			position: sticky;
+			top: calc(var(--header-height) + var(--top-gutter));
+			max-height: calc(100vh - (2 * var(--header-height)));
+			overflow: auto;
+		}
+
 		li:first-child {
 			font-size: 1.25rem;
 		}
 
 		main {
 			grid-area: main;
+			margin-bottom: 6rem;
 		}
 	}
 </style>
