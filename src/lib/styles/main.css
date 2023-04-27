@@ -7,8 +7,8 @@
 	--top-gutter: 3rem; /* 48px */
 	--color-transition-duration: 100ms;
 	--ease: cubic-bezier(0.42, 0.35, 1, 0.98);
-	--ease-out: cubic-bezier(0,-0.04,0,.99);
-	--ease-in: cubic-bezier(0,.99,.88,.99);
+	--ease-out: cubic-bezier(0, -0.04, 0, 0.99);
+	--ease-in: cubic-bezier(0, 0.99, 0.88, 0.99);
 }
 
 html {

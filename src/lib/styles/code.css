@@ -1,5 +1,5 @@
-code[class*="language-"],
-pre[class*="language-"] {
+code[class*='language-'],
+pre[class*='language-'] {
 	color: var(--code-text);
 
 	border-radius: 0.25rem;
@@ -26,35 +26,35 @@ pre[class*="language-"] {
 }
 
 /* Selection */
-code[class*="language-"]::-moz-selection,
-pre[class*="language-"]::-moz-selection,
-code[class*="language-"] ::-moz-selection,
-pre[class*="language-"] ::-moz-selection {
+code[class*='language-']::-moz-selection,
+pre[class*='language-']::-moz-selection,
+code[class*='language-'] ::-moz-selection,
+pre[class*='language-'] ::-moz-selection {
 	background: var(--code-highlight-med);
 }
 
-code[class*="language-"]::selection,
-pre[class*="language-"]::selection,
-code[class*="language-"] ::selection,
-pre[class*="language-"] ::selection {
+code[class*='language-']::selection,
+pre[class*='language-']::selection,
+code[class*='language-'] ::selection,
+pre[class*='language-'] ::selection {
 	background: var(--code-highlight-med);
 }
 
 /* Code (block & inline) */
-:not(pre) > code[class*="language-"],
-pre[class*="language-"] {
+:not(pre) > code[class*='language-'],
+pre[class*='language-'] {
 	color: var(--code-text);
 	background: var(--code-base);
 }
 
 /* Code blocks */
-pre[class*="language-"] {
+pre[class*='language-'] {
 	padding: 1rem;
 	overflow: auto;
 }
 
 /* Inline code */
-:not(pre) > code[class*="language-"] {
+:not(pre) > code[class*='language-'] {
 	padding: 0.1em;
 	border-radius: 0.25rem;
 	white-space: normal;
@@ -168,7 +168,7 @@ pre[data-line] {
 	position: relative;
 }
 
-pre[class*="language-"] > code[class*="language-"] {
+pre[class*='language-'] > code[class*='language-'] {
 	position: relative;
 	z-index: 1;
 }

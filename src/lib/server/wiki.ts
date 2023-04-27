@@ -77,12 +77,13 @@ function create_section(heading: Heading) {
 
 function create_code_block(code: Code) {
 	loadLanguages([code.lang ?? '']);
-	return `<pre class="language-${code.lang ?? ''}"><code class="language-${code.lang ?? ''
-		}">${prism.highlight(
-			code.value,
-			prism.languages[code.lang ?? ''],
-			code.lang ?? ''
-		)}</code></pre>`;
+	return `<pre class="language-${code.lang ?? ''}"><code class="language-${
+		code.lang ?? ''
+	}">${prism.highlight(
+		code.value,
+		prism.languages[code.lang ?? ''],
+		code.lang ?? ''
+	)}</code></pre>`;
 }
 
 function create_html_block(content: Content) {

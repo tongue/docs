@@ -8,7 +8,6 @@
 	import { is_large_screen, menu_expanded } from '$lib/app.js';
 	import ButtonMenuToggle from '$lib/components/button-menu-toggle.svelte';
 
-
 	export let data;
 </script>
 
@@ -35,8 +34,12 @@
 	</nav>
 	<menu>
 		<a href="/" class="logo"><span class="visually-hidden">Home</span></a>
-		<ButtonMenuToggle class={'button-menu-toggle'} on:click={$menu_expanded ? menu_expanded.set(false) : menu_expanded.set(true)} open={$menu_expanded} />
-		
+		<ButtonMenuToggle
+			class={'button-menu-toggle'}
+			on:click={$menu_expanded ? menu_expanded.set(false) : menu_expanded.set(true)}
+			open={$menu_expanded}
+		/>
+
 		<ThemeSwitcher class={`theme-switcher${!$menu_expanded ? ' hidden' : ''}`} />
 	</menu>
 
@@ -93,7 +96,7 @@
 		transition-timing-function: var(--ease) var(--ease-out);
 	}
 
-	nav[aria-hidden="true"] + menu {
+	nav[aria-hidden='true'] + menu {
 		width: 4rem;
 		transition-duration: var(--color-transition-duration), 300ms;
 		transition-delay: 0ms, 200ms;
@@ -106,8 +109,8 @@
 
 		transition-property: opacity, transform;
 		transition-duration: 100ms;
-		transition-timing-function: var(--ease,) var(--ease);
-		transition-delay: 450ms;		
+		transition-timing-function: var(--ease) var(--ease);
+		transition-delay: 450ms;
 	}
 
 	menu :global(.theme-switcher.hidden) {
@@ -117,7 +120,7 @@
 		pointer-events: none;
 		transition-delay: 0ms;
 	}
-	
+
 	.logo {
 		display: none;
 		width: 1.8125rem;
@@ -178,7 +181,8 @@
 			display: none;
 		}
 
-		menu :global(.theme-switcher), menu :global(.theme-switcher.hidden) {
+		menu :global(.theme-switcher),
+		menu :global(.theme-switcher.hidden) {
 			opacity: 1;
 			pointer-events: all;
 		}
