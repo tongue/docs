@@ -84,7 +84,7 @@
 		z-index: 10;
 		margin: 0;
 		padding: 0;
-		background: var(--theme-panel);
+		background-color: var(--theme-panel);
 		backdrop-filter: blur(10px);
 		width: calc(100vw - var(--gutter-width) * 2);
 
@@ -104,7 +104,7 @@
 	}
 
 	nav[aria-hidden='true'] + menu {
-		width: 4rem;
+		width: 4.5rem;
 		transition-duration: var(--color-transition-duration), 300ms;
 		transition-delay: 0ms, 200ms;
 		transition-timing-function: var(--ease), var(--ease-out);
