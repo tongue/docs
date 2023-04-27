@@ -85,9 +85,10 @@
 		margin: 0;
 		padding: 0;
 		background: var(--theme-panel);
+		backdrop-filter: blur(10px);
 		width: calc(100vw - var(--gutter-width) * 2);
 
-		transition-property: background, width;
+		transition-property: background-color, width;
 		transition-duration: var(--color-transition-duration), 380ms;
 		transition-timing-function: var(--ease) var(--ease-out);
 	}
