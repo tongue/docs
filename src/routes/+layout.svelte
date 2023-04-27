@@ -64,7 +64,6 @@
 		z-index: 5;
 
 		border-right: 0.25rem solid var(--theme-panel);
-		padding-top: var(--top-gutter);
 		background: var(--theme-bg);
 		transform: translateX(0);
 
@@ -197,13 +196,12 @@
 			transform: none;
 			max-width: var(--aside-width);
 			background: unset;
+			padding-top: var(--top-gutter);
 		}
 
-		nav :global(ul) {
+		nav :global(> div) {
 			position: sticky;
 			top: calc(var(--header-height) + var(--top-gutter));
-			max-height: calc(100vh - (2 * var(--header-height)));
-			overflow: auto;
 		}
 
 		li:first-child {

@@ -1,12 +1,60 @@
 <script lang="ts">
+	import { overflow_ratio } from '$lib/actions/overflow_ratio';
+
 	export let tag: 'ul' | 'ol' = 'ul';
+
+	let start_ratio = 0;
+	let end_ratio = 0;
+
+	function handle_ratios(event: CustomEvent<number>) {
+		if (event.type === 'startoverflowratio') {
+			start_ratio = event.detail;
+		} else if (event.type === 'endoverflowratio') {
+			end_ratio = event.detail;
+		}
+	}
 </script>
 
-<svelte:element this={tag}>
-	<slot />
-</svelte:element>
+<div style="--start-ratio: {start_ratio}; --end-ratio: {end_ratio}">
+	<svelte:element
+		this={tag}
+		use:overflow_ratio
+		on:startoverflowratio={handle_ratios}
+		on:endoverflowratio={handle_ratios}
+	>
+		<slot />
+	</svelte:element>
+</div>
 
 <style>
+	div {
+		position: relative;
+		overflow: hidden;
+	}
+
+	div::before,
+	div::after {
+		position: absolute;
+		content: '';
+		display: block;
+		height: 1.5rem;
+		left: 0;
+		right: 0;
+		z-index: 10;
+	}
+
+	div::before {
+		top: 0;
+		background: linear-gradient(to bottom, var(--theme-bg) 0%, transparent 100%);
+		transform: translateY(calc((1 - var(--start-ratio)) * -100%));
+	}
+
+	div::after {
+		bottom: 0;
+		background: linear-gradient(to top, var(--theme-bg) 0%, transparent 100%);
+		transform: translateY(calc((1 - var(--end-ratio)) * 100%));
+	}
+
 	ul,
 	ol {
 		display: flex;
@@ -15,13 +63,19 @@
 		margin: 0;
 		list-style: none;
 		font-size: 1.25rem;
+		overflow: auto;
+		max-height: calc(100vh - (2 * var(--header-height)));
+	}
+
+	ul {
+		padding-top: var(--top-gutter);
 	}
 
 	ul :global(a),
 	ol :global(a) {
 		position: relative;
 		display: inline-block;
-		padding: 1.5rem 1.5rem;
+		padding: 1.5rem;
 		color: var(--theme-fg);
 		text-decoration: none;
 	}
@@ -75,6 +129,10 @@
 		ul,
 		ol {
 			font-size: 0.875rem;
+		}
+
+		ul {
+			padding-top: 0;
 		}
 
 		ul :global(a),
