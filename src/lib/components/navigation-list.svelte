@@ -17,8 +17,8 @@
 		font-size: 0.875rem;
 	}
 
-	ul :global(> li > a),
-	ol :global(> li > a) {
+	ul :global(a),
+	ol :global(a) {
 		position: relative;
 		display: inline-block;
 		padding: 0.5rem 1.5rem;
@@ -26,17 +26,17 @@
 		text-decoration: none;
 	}
 
-	ul :global(> li > a) {
+	ul :global(a) {
 		font-weight: 500;
 		width: 100%;
 	}
 
-	ol :global(> li > a) {
+	ol :global(a) {
 		font-weight: 400;
 	}
 
-	ul :global(> li > a[aria-current='page']),
-	ol :global(> li > a[aria-current='location']) {
+	ul :global(a[aria-current='page']),
+	ol :global(a[aria-current='location']) {
 		background: linear-gradient(
 			270deg,
 			var(--theme-nav-gradient-start) -0.09%,
@@ -44,16 +44,16 @@
 		);
 	}
 
-	ul :global(> li > a[aria-current='page']) {
+	ul :global(a[aria-current='page']) {
 		font-weight: 700;
 	}
 
-	ol :global(> li > a[aria-current='location']) {
+	ol :global(a[aria-current='location']) {
 		font-weight: 500;
 	}
 
-	ul :global(> li > a::before),
-	ol :global(> li > a::before) {
+	ul :global(a::before),
+	ol :global(a::before) {
 		position: absolute;
 		top: 0;
 		bottom: 0;
@@ -62,12 +62,12 @@
 		width: 0.25rem;
 	}
 
-	ol :global(> li > a::before) {
+	ol :global(a::before) {
 		background: var(--theme-stroke);
 	}
 
-	ul :global(> li > a[aria-current='page']::before),
-	ol :global(> li > a[aria-current='location']::before) {
+	ul :global(a[aria-current='page']::before),
+	ol :global(a[aria-current='location']::before) {
 		background: var(--theme-accent);
 	}
 </style>
