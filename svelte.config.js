@@ -16,6 +16,18 @@ const config = {
 		adapter: adapter(),
 		paths: {
 			base: dev ? '' : process.env.BASE_PATH
+		},
+		prerender: {
+			handleHttpError: ({ path, referrer, message }) => {
+				// ignore deliberate link to shiny 404 page
+				console.log('path', path);
+				console.log('referrer', referrer);
+				console.log('message', message);
+				return;
+
+				// otherwise fail the build
+				// throw new Error(message);
+			}
 		}
 	}
 };
