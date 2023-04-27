@@ -2,28 +2,47 @@ import { browser } from '$app/environment';
 import { readable, writable } from 'svelte/store';
 
 function create_menu_expanded() {
-	const { set, subscribe } = writable(false);
+	const { set, subscribe, update } = writable(false);
 
-	const set_expanded = (expanded: boolean) => () => {
-		if (browser) {
-			document.body.classList.toggle('noscroll', expanded);
-		}
-		set(expanded);
+	function make_inert(value: boolean) {
+		document.body.classList.toggle('noscroll', value);
+		const main = document.querySelector('main');
+		if (main) main.inert = value;
+	};
+
+	function set_expanded(expanded: boolean) {
+		return () => {
+			if (!browser) return;
+			make_inert(expanded);
+			set(expanded);
+		};
+	}
+
+	function toggle() {
+		update((expanded) => {
+			make_inert(!expanded);
+			return !expanded;
+		});
 	};
 
 	return {
 		subscribe,
-		set: set_expanded
+		set: set_expanded,
+		toggle
 	};
 }
 export const menu_expanded = create_menu_expanded();
 
-const check_if_large_screen = () => browser && matchMedia('(min-width: 55em)').matches;
-export const is_large_screen = readable(check_if_large_screen(), (set) => {
+const matches_large_screen_mq = () => browser && matchMedia('(min-width: 55em)').matches;
+export const is_large_screen = readable(matches_large_screen_mq(), (set) => {
 	let resize_observer: ResizeObserver | null = null;
 
+	function on_resize() {
+		set(matches_large_screen_mq());
+	}
+
 	if (browser) {
-		resize_observer = new ResizeObserver(() => set(check_if_large_screen()));
+		resize_observer = new ResizeObserver(on_resize);
 		resize_observer.observe(document.body);
 	}
 
@@ -40,21 +59,24 @@ function create_theme() {
 
 	const is_theme = (value: string): value is Theme => value === 'dark' || value === 'light';
 
-	const initial_value = () => {
+	function get_preferred_theme() {
 		if (!browser) return 'light';
 		const persisted_theme = localStorage.getItem(STORAGE_KEY);
 		if (persisted_theme && is_theme(persisted_theme)) return persisted_theme;
 		return matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-	};
+	}
 
-	const { subscribe, set } = writable<Theme>(initial_value());
+	const { subscribe, set } = writable<Theme>(get_preferred_theme());
 
-	const set_theme = (theme: Theme) => {
+	function set_theme(theme: Theme) {
+		if (!browser) return;
 		set(theme);
 		document.body.classList.toggle('light', theme === 'light');
 		document.body.classList.toggle('dark', theme === 'dark');
 		localStorage.setItem(STORAGE_KEY, theme);
 	};
+
+	set_theme(get_preferred_theme());
 
 	return {
 		subscribe,
