@@ -4,7 +4,7 @@
 	import '$lib/styles/code.css';
 
 	export let data;
-	const { title, sections, modified, edit, author } = data;
+	const { title, sections, modified, edit, author } = data.page;
 
 	let active: string | null = null;
 

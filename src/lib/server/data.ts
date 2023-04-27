@@ -4,9 +4,13 @@ import { existsSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import simpleGit, { GitError } from 'simple-git';
 import slugify from 'slugify';
-import { GITHUB_PROJECT, DATA_DIR, WIKI_HOME } from '$env/static/private';
+import { GITHUB_PROJECT, DATA_DIR } from '$env/static/private';
 
 export const REPOSITORY = resolve(DATA_DIR, `${GITHUB_PROJECT.split('/')[1]}.wiki`);
+
+export const get_name_from_path = (path: string) => path.split('/').pop()?.replace('.md', '');
+
+export const decode_name = (slug: string) => slug.split('-').join(' ');
 
 export const get_all_markdown_paths = () =>
 	glob.sync(`${REPOSITORY}**/*.md`, { ignore: '.git/**' });
@@ -60,14 +64,4 @@ export async function sync() {
 			}
 		}
 	}
-
-	const files = new Map(
-		glob.sync(`${REPOSITORY}**/*.md`, { ignore: '.git/**' }).map((filename) => {
-			const name = filename.split('/').pop()?.replace('.md', '');
-			const slug = name === WIKI_HOME ? '' : to_slug(name);
-			return [slug, filename];
-		})
-	);
-
-	return files;
 }
