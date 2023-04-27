@@ -16,9 +16,7 @@ function create_menu_expanded() {
 		set: set_expanded
 	};
 }
-
 export const menu_expanded = create_menu_expanded();
-
 
 const check_if_large_screen = () => browser && matchMedia('(min-width: 55em)').matches;
 export const is_large_screen = readable(check_if_large_screen(), (set) => {
@@ -35,3 +33,32 @@ export const is_large_screen = readable(check_if_large_screen(), (set) => {
 		}
 	};
 });
+
+type Theme = 'dark' | 'light';
+function create_theme() {
+	const STORAGE_KEY = 'docs-theme';
+
+	const is_theme = (value: string): value is Theme => value === 'dark' || value === 'light';
+
+	const initial_value = () => {
+		if (!browser) return 'light';
+		const persisted_theme = localStorage.getItem(STORAGE_KEY);
+		if (persisted_theme && is_theme(persisted_theme)) return persisted_theme;
+		return matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+	};
+
+	const { subscribe, set } = writable<Theme>(initial_value());
+
+	const set_theme = (theme: Theme) => {
+		set(theme);
+		document.body.classList.toggle('light', theme === 'light');
+		document.body.classList.toggle('dark', theme === 'dark');
+		localStorage.setItem(STORAGE_KEY, theme);
+	};
+
+	return {
+		subscribe,
+		set: set_theme
+	};
+}
+export const theme = create_theme();

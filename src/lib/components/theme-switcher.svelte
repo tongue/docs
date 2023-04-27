@@ -1,54 +1,23 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-
-	const STORAGE_KEY = 'docs-theme';
-
-	let theme: 'dark' | 'light' = matchMedia('(prefers-color-scheme: dark)').matches
-		? 'dark'
-		: 'light';
-
-	const handle_theme_switch = (new_theme: 'dark' | 'light') => {
-		if (new_theme === 'dark') {
-			document.body.classList.remove('light');
-			document.body.classList.add('dark');
-		} else {
-			document.body.classList.remove('dark');
-			document.body.classList.add('light');
-		}
-		localStorage.setItem(STORAGE_KEY, new_theme);
-		theme = new_theme;
-	};
+	import { theme } from '$lib/app';
 
 	const on_change = (event: Event) => {
 		const target = event.target as HTMLInputElement;
-		if (target.checked) {
-			handle_theme_switch('dark');
-		} else {
-			handle_theme_switch('light');
-		}
+		const new_theme = target.checked ? 'dark' : 'light';
+		theme.set(new_theme);
 	};
-
-	onMount(() => {
-		const persisted_theme = localStorage.getItem(STORAGE_KEY);
-		if ((persisted_theme === 'dark' || persisted_theme === 'light') && persisted_theme !== theme) {
-			handle_theme_switch(persisted_theme);
-		}
-	});
 </script>
 
 <label>
 	<input
+		name="theme"
 		type="checkbox"
-		id="toggle-dark-theme"
-		checked={theme === 'dark'}
+		checked={$theme === 'dark'}
 		on:change|preventDefault={on_change}
 	/>
-	<span class="switch"
-		><span>
-			<span class="visually-hidden">Toggle "dark theme"</span>
-		</span></span
-	></label
->
+	<span class="switch" />
+	<span class="visually-hidden">Toggle "dark theme"</span>
+</label>
 
 <style>
 	label {
@@ -100,7 +69,6 @@
 		height: 1rem;
 		border-radius: 100%;
 		background-color: var(--theme-fg);
-		box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.12);
 		transition: transform 200ms ease-in-out;
 		transform: translateX(50%);
 	}
