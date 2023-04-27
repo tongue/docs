@@ -18,7 +18,27 @@
 </script>
 
 <div class="layout">
-	<menu class:expanded={!$is_large_screen && $menu_expanded}>
+	<nav
+		id="wiki-articles"
+		aria-labelledby="menu-button"
+		aria-hidden={!$is_large_screen && !$menu_expanded ? true : undefined}
+	>
+		<NavigationList>
+			{#each data.navigation_items as item}
+				<li>
+					<a
+						href={`/${item.slug}`}
+						on:click={menu_expanded.set(false)}
+						aria-current={(!$page.params.slug && item.slug === '') ||
+						$page.params.slug === item.slug
+							? 'page'
+							: undefined}>{item.title}</a
+					>
+				</li>
+			{/each}
+		</NavigationList>
+	</nav>
+	<menu>
 		<a href="/" class="logo"><span class="visually-hidden">Home</span></a>
 
 		{#if $menu_expanded}
@@ -47,27 +67,6 @@
 		{/if}
 	</menu>
 
-	<nav
-		id="wiki-articles"
-		aria-labelledby="menu-button"
-		aria-hidden={!$is_large_screen && !$menu_expanded ? true : undefined}
-	>
-		<NavigationList>
-			{#each data.navigation_items as item}
-				<li>
-					<a
-						href={`/${item.slug}`}
-						on:click={menu_expanded.set(false)}
-						aria-current={(!$page.params.slug && item.slug === '') ||
-						$page.params.slug === item.slug
-							? 'page'
-							: undefined}>{item.title}</a
-					>
-				</li>
-			{/each}
-		</NavigationList>
-	</nav>
-
 	<main>
 		<slot />
 	</main>
@@ -78,52 +77,6 @@
 		max-width: var(--max-width);
 		margin: 0 auto 6rem;
 		padding: 0 var(--gutter-width);
-	}
-
-	menu {
-		position: fixed;
-		bottom: var(--gutter-width);
-		z-index: 10;
-		display: flex;
-		margin: 0;
-		padding: 0;
-		justify-content: space-between;
-		align-items: center;
-		background: var(--theme-panel);
-
-		transition: background var(--color-transition-duration) ease-in-out;
-	}
-
-	.expanded {
-		width: calc(100vw - var(--gutter-width) * 2);
-	}
-
-	.logo {
-		display: none;
-		width: 1.8125rem;
-		height: 1.5rem;
-		background-image: var(--logo);
-	}
-
-	.logo,
-	:global(.light) .logo {
-		--logo: url('/logo-alster.svg');
-	}
-	@media (prefers-color-scheme: dark) {
-		.logo {
-			--logo: url('/logo-alster_inverted.svg');
-		}
-	}
-	:global(.dark) .logo {
-		--logo: url('/logo-alster_inverted.svg');
-	}
-
-	.theme-switcher {
-		display: none;
-	}
-
-	menu.expanded .theme-switcher {
-		display: initial;
 	}
 
 	nav {
@@ -147,6 +100,49 @@
 		transition: transform 100ms ease-out;
 		transform: translateX(-100%);
 		pointer-events: none;
+	}
+
+	menu {
+		position: fixed;
+		bottom: var(--gutter-width);
+		z-index: 10;
+		display: flex;
+		margin: 0;
+		padding: 0;
+		justify-content: space-between;
+		align-items: center;
+		background: var(--theme-panel);
+		width: calc(100vw - var(--gutter-width) * 2);
+
+		transition: background var(--color-transition-duration) ease-in-out;
+	}
+
+	nav[aria-hidden="true"] + menu .theme-switcher {
+		display: none;
+	}
+
+	nav[aria-hidden="true"] + menu {
+		width: auto;
+	}
+
+	.logo {
+		display: none;
+		width: 1.8125rem;
+		height: 1.5rem;
+		background-image: var(--logo);
+	}
+
+	.logo,
+	:global(.light) .logo {
+		--logo: url('/logo-alster.svg');
+	}
+	@media (prefers-color-scheme: dark) {
+		.logo {
+			--logo: url('/logo-alster_inverted.svg');
+		}
+	}
+	:global(.dark) .logo {
+		--logo: url('/logo-alster_inverted.svg');
 	}
 
 	main {
@@ -178,8 +174,7 @@
 			transition: background var(--color-transition-duration) ease-in-out;
 		}
 
-		menu,
-		menu.expanded {
+		menu {
 			position: sticky;
 			top: 0;
 			grid-area: menu;
