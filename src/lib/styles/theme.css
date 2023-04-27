@@ -1,33 +1,22 @@
 :root {
-	--color-white: #fff;
-	--color-black: #000;
-	--purple: hsla(279, 32%, 64%, 1);
+	--deepblue-1: hsla(223, 28%, 5%, 1);
+	--deepblue-2: hsla(225, 16%, 10%, 1);
+	--deepblue-3: hsla(227, 10%, 13%, 1);
+	--deepblue-4: hsla(227, 11%, 15%, 1);
+	--deepblue-5: hsla(227, 11%, 25%, 1);
+	--deepblue-gradient-start: hsl(229 22% 10%);
+	--deepblue-gradient-end: var(--deepblue-3);
 
-	--grayish: hsla(210, 2%, 34%, 1);
+	--neutral-1: hsla(0, 0%, 98%, 1);
+	--neutral-2: hsla(0, 0%, 92%, 1);
+	--neutral-3: hsla(0, 0%, 80%, 1);
+	--neutral-4: hsla(0, 0%, 56%, 1);
+	--neutral-5: hsla(0, 0%, 42%, 1);
+	--neutral-gradient-start: hsl(0 0% 98%);
+	--neutral-gradient-end: var(--neutral-2);
 
-	--white-85: hsla(0, 0%, 85%, 1);
-	--white-93: hsla(0, 0%, 93%, 1);
-	--white-95: hsla(0, 0%, 95%, 1);
-	--white-98: hsla(0, 0%, 98%, 1);
-
-	--black-23: hsla(0, 0%, 23%, 1);
-
-	--dark-2: hsla(220, 33%, 2%, 1);
-	--dark-7: hsla(220, 29%, 7%, 1);
-	--dark-71: hsla(220, 2%, 71%, 1);
-
-	--darkish-9: hsla(222, 28%, 9%, 1);
-	--darkish-16: hsla(222, 18%, 16%, 1);
-
-	--hmm: hsla(226, 29%, 14%, 1);
-
-	--mork: hsla(216, 15%, 6%, 1);
-
-	--blueish-dark: hsla(228, 28%, 5%, 1);
-	--blueish: hsla(226, 29%, 7%, 1);
-	--blueish-light: hsla(226, 29%, 14%, 1);
-
-	--gray: hsla(0, 0%, 23%, 1);
+	--purple-1: hsla(278, 79%, 58%, 1);
+	--purple-2: hsla(279, 52%, 64%, 1);
 }
 
 :root {
@@ -64,18 +53,19 @@
 
 body,
 body.light {
-	--theme-bg: var(--white-98);
-	--theme-fg: var(--mork);
-	--theme-stroke: var(--white-85);
-	--theme-accent: var(--purple);
-	--theme-nav-gradient-start: var(--white-98);
-	--theme-nav-gradient-end: var(--white-95);
-	--theme-body: var(--grayish);
-	--theme-panel: var(--white-93);
-	--theme-track: var(--white-98);
-	--theme-card: var(--white-93);
+	--theme-bg: var(--neutral-1);
+	--theme-fg: var(--deepblue-1);
 
-	--code-base: var(--white-93);
+	--theme-stroke: var(--neutral-2);
+	--theme-accent: var(--purple-2);
+	--theme-nav-gradient-start: var(--neutral-gradient-start);
+	--theme-nav-gradient-end: var(--neutral-gradient-end);
+	--theme-body: var(--deepblue-5);
+	--theme-panel: var(--neutral-2);
+	--theme-track: var(--neutral-3);
+	--theme-card: var(--neutral-2);
+
+	--code-base: var(--neutral-2);
 	--code-surface: var(--rp-dawn-surface);
 	--code-overlay: var(--rp-dawn-overlay);
 	--code-muted: var(--rp-dawn-muted);
@@ -99,18 +89,18 @@ body.light {
 
 @media (prefers-color-scheme: dark) {
 	body {
-		--theme-bg: var(--blueish);
-		--theme-fg: var(--white-98);
-		--theme-stroke: var(--gray);
-		--theme-accent: var(--purple);
-		--theme-nav-gradient-start: var(--darkish-9);
-		--theme-nav-gradient-end: var(--darkish-16);
-		--theme-body: var(--dark-71);
-		--theme-panel: var(--blueish-dark);
-		--theme-track: var(--blueish-light);
-		--theme-card: var(--blueish-light);
+		--theme-bg: var(--deepblue-2);
+		--theme-fg: var(--neutral-2);
+		--theme-stroke: var(--deepblue-1);
+		--theme-accent: var(--purple-1);
+		--theme-nav-gradient-start: var(--deepblue-gradient-start);
+		--theme-nav-gradient-end: var(--deepblue-gradient-end);
+		--theme-body: var(--neutral-4);
+		--theme-panel: var(--deepblue-1);
+		--theme-track: var(--deepblue-4);
+		--theme-card: var(--deepblue-3);
 
-		--code-base: var(--blueish-light);
+		--code-base: var(--deepblue-3);
 		--code-surface: var(--rp-surface);
 		--code-overlay: var(--rp-overlay);
 		--code-muted: var(--rp-muted);
@@ -129,18 +119,18 @@ body.light {
 }
 
 body.dark {
-	--theme-bg: var(--blueish);
-	--theme-fg: var(--white-98);
-	--theme-stroke: var(--gray);
-	--theme-accent: var(--purple);
-	--theme-nav-gradient-start: var(--darkish-9);
-	--theme-nav-gradient-end: var(--darkish-16);
-	--theme-body: var(--dark-71);
-	--theme-panel: var(--blueish-dark);
-	--theme-track: var(--blueish-light);
-	--theme-card: var(--blueish-light);
+	--theme-bg: var(--deepblue-2);
+	--theme-fg: var(--neutral-2);
+	--theme-stroke: var(--deepblue-1);
+	--theme-accent: var(--purple-1);
+	--theme-nav-gradient-start: var(--deepblue-gradient-start);
+	--theme-nav-gradient-end: var(--deepblue-gradient-end);
+	--theme-body: var(--neutral-4);
+	--theme-panel: var(--deepblue-1);
+	--theme-track: var(--deepblue-4);
+	--theme-card: var(--deepblue-3);
 
-	--code-base: var(--blueish-light);
+	--code-base: var(--deepblue-3);
 	--code-surface: var(--rp-surface);
 	--code-overlay: var(--rp-overlay);
 	--code-muted: var(--rp-muted);

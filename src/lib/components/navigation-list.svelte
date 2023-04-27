@@ -14,14 +14,14 @@
 		padding: 0;
 		margin: 0;
 		list-style: none;
-		font-size: 0.875rem;
+		font-size: 1.25rem;
 	}
 
 	ul :global(a),
 	ol :global(a) {
 		position: relative;
 		display: inline-block;
-		padding: 0.5rem 1.5rem;
+		padding: 1.5rem 1.5rem;
 		color: var(--theme-fg);
 		text-decoration: none;
 	}
@@ -69,5 +69,17 @@
 	ul :global(a[aria-current='page']::before),
 	ol :global(a[aria-current='location']::before) {
 		background: var(--theme-accent);
+	}
+
+	@media (min-width: 55em) {
+		ul,
+		ol {
+			font-size: 0.875rem;
+		}
+
+		ul :global(a),
+		ol :global(a) {
+			padding: 0.5rem 1.5rem;
+		}
 	}
 </style>

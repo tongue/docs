@@ -71,7 +71,7 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		border-top: 1px solid var(--theme-stroke);
+		border-top: 2px solid var(--theme-stroke);
 	}
 
 	header ul {
