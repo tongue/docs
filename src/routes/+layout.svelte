@@ -154,7 +154,6 @@
 
 	@media (min-width: 55em) {
 		.layout {
-			--top-gutter: 2rem;
 			display: grid;
 			grid-template-columns: var(--aside-width) auto;
 			grid-template-rows: var(--header-height) auto;

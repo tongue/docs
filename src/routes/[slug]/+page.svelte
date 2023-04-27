@@ -67,11 +67,12 @@
 
 	header div {
 		margin-top: 2rem;
-		padding-top: 1.25rem;
+		padding-top: 0.5rem;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		border-top: 2px solid var(--theme-stroke);
+		border-top: 4px solid var(--theme-stroke);
+		color: var(--theme-body);
 	}
 
 	header ul {

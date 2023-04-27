@@ -63,7 +63,7 @@
 	}
 
 	ol :global(a::before) {
-		background: var(--theme-stroke);
+		background: var(--theme-panel);
 	}
 
 	ul :global(a[aria-current='page']::before),
