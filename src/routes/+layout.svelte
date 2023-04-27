@@ -86,6 +86,7 @@
 		padding: 0;
 		background-color: var(--theme-panel);
 		backdrop-filter: blur(10px);
+		-webkit-backdrop-filter: blur(10px);
 		width: calc(100vw - var(--gutter-width) * 2);
 
 		transition-property: background-color, width;
