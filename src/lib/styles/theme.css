@@ -93,11 +93,11 @@ body.light {
 	body {
 		--theme-bg: var(--deepblue-2);
 		--theme-fg: var(--neutral-2);
-		--theme-stroke: var(--deepblue-4);
+		--theme-stroke: var(--deepblue-3);
 		--theme-accent: var(--purple-1);
 		--theme-nav-gradient-start: var(--deepblue-gradient-start);
 		--theme-nav-gradient-end: var(--deepblue-gradient-end);
-		--theme-body: var(--neutral-4);
+		--theme-body: var(--neutral-3);
 		--theme-panel: var(--deepblue-blur);
 		--theme-track: var(--deepblue-4);
 		--theme-card: var(--deepblue-3);
@@ -127,7 +127,7 @@ body.dark {
 	--theme-accent: var(--purple-1);
 	--theme-nav-gradient-start: var(--deepblue-gradient-start);
 	--theme-nav-gradient-end: var(--deepblue-gradient-end);
-	--theme-body: var(--neutral-4);
+	--theme-body: var(--neutral-3);
 	--theme-panel: var(--deepblue-blur);
 	--theme-track: var(--deepblue-4);
 	--theme-card: var(--deepblue-3);
