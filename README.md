@@ -4,6 +4,8 @@
 
 - Create a `.env` file according to the spec in `env.example`.
 
+Should deploy to Github pages
+
 ## Developing
 
 Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
