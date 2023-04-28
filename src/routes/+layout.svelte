@@ -7,7 +7,6 @@
 	import ThemeSwitcher from '$lib/components/theme-switcher.svelte';
 	import { is_large_screen, menu_expanded } from '$lib/app.js';
 	import ButtonMenuToggle from '$lib/components/button-menu-toggle.svelte';
-	import { base } from '$app/paths';
 
 	export let data;
 </script>
@@ -19,10 +18,10 @@
 		aria-hidden={!$is_large_screen && !$menu_expanded ? true : undefined}
 	>
 		<NavigationList>
-			{#each data.navigation_items as item}
+			{#each data.navigation_items as item, index}
 				<li>
 					<a
-						href={`${base}/${item.slug}`}
+						href={`${index > 0 ? '/articles' : ''}/${item.slug}`}
 						on:click={menu_expanded.set(false)}
 						aria-current={(!$page.params.slug && item.slug === '') ||
 						$page.params.slug === item.slug
@@ -35,7 +34,7 @@
 	</nav>
 	<menu>
 		<section>
-			<a href="{base}/" class="logo"><span class="visually-hidden">Home</span></a>
+			<a href="/" class="logo"><span class="visually-hidden">Home</span></a>
 			<ButtonMenuToggle
 				class={'button-menu-toggle'}
 				on:click={$menu_expanded ? menu_expanded.set(false) : menu_expanded.set(true)}
