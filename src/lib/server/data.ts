@@ -4,7 +4,7 @@ import { resolve } from 'node:path';
 import slugify from 'slugify';
 import { GITHUB_PROJECT } from '$env/static/private';
 
-export const REPOSITORY = resolve('data');
+export const REPOSITORY = resolve('markdown');
 
 export const get_name_from_path = (path: string) => path.split('/').pop()?.replace('.md', '');
 
