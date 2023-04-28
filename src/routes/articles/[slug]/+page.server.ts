@@ -2,7 +2,6 @@ import {
 	decode_name,
 	get_file,
 	get_file_edit_url,
-	get_file_log,
 	get_name_from_path,
 	get_all_markdown_paths,
 	to_slug
@@ -13,16 +12,13 @@ import { sections } from '$lib/server/markdown';
 import { format } from 'date-fns';
 
 async function get_page(path: string) {
-	const git_log = await get_file_log(path);
 	const name = get_name_from_path(path);
 	if (!name) throw error(503, `Could not extract name from path: ${path}`);
 
 	return {
 		title: decode_name(name),
-		author: git_log?.latest?.author_name ?? 'unknown',
-		modified: git_log?.latest?.date
-			? { display: format(new Date(git_log.latest.date), 'MMM d yyyy'), value: git_log.latest.date }
-			: { display: 'unknown', value: '' },
+		author: 'unknown',
+		modified: { display: format(new Date(), 'MMM d yyyy'), value: new Date().toISOString() },
 		sections: sections(get_file(path)),
 		edit: get_file_edit_url(name)
 	};

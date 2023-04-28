@@ -2,7 +2,6 @@ import type { LayoutServerLoad } from './$types';
 import {
 	decode_name,
 	get_name_from_path,
-	sync,
 	get_all_markdown_paths,
 	to_slug
 } from '$lib/server/data';
@@ -10,8 +9,6 @@ import { WIKI_HOME } from '$env/static/private';
 import { error } from '@sveltejs/kit';
 
 export const load = (async () => {
-	await sync();
-
 	return {
 		navigation_items: get_all_markdown_paths().reduce<{ title: string; slug: string }[]>(
 			(navigation_items, path) => {
