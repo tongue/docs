@@ -62,20 +62,20 @@
 		padding: 0;
 		margin: 0;
 		list-style: none;
-		font-size: 1.25rem;
+		font-size: 1rem;
 		overflow: auto;
 		max-height: calc(100vh - (2 * var(--header-height)));
 	}
 
 	ul {
-		padding-top: var(--top-gutter);
+		padding-top: 2rem;
 	}
 
 	ul :global(a),
 	ol :global(a) {
 		position: relative;
 		display: inline-block;
-		padding: 1.5rem;
+		padding: 1rem 1.5rem;
 		color: var(--theme-fg);
 		text-decoration: none;
 	}
