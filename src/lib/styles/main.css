@@ -4,7 +4,7 @@
 	--header-height: 4rem; /* 64px */
 	--gap-width: 3rem; /* 48px */
 	--gutter-width: 1.5rem; /* 24px */
-	--top-gutter: 3rem; /* 48px */
+	--top-gutter: 4rem; /* 48px */
 	--color-transition-duration: 100ms;
 	--ease: cubic-bezier(0.42, 0.35, 1, 0.98);
 	--ease-out: cubic-bezier(0, -0.04, 0, 0.99);
