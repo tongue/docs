@@ -7,6 +7,7 @@
 	import ThemeSwitcher from '$lib/components/theme-switcher.svelte';
 	import { is_large_screen, menu_expanded } from '$lib/app.js';
 	import ButtonMenuToggle from '$lib/components/button-menu-toggle.svelte';
+	import { base } from '$app/paths';
 
 	export let data;
 </script>
@@ -21,7 +22,7 @@
 			{#each data.navigation_items as item}
 				<li>
 					<a
-						href={`/${item.slug}`}
+						href={`${base}/${item.slug}`}
 						on:click={menu_expanded.set(false)}
 						aria-current={(!$page.params.slug && item.slug === '') ||
 						$page.params.slug === item.slug
@@ -34,7 +35,7 @@
 	</nav>
 	<menu>
 		<section>
-			<a href="/" class="logo"><span class="visually-hidden">Home</span></a>
+			<a href="{base}/" class="logo"><span class="visually-hidden">Home</span></a>
 			<ButtonMenuToggle
 				class={'button-menu-toggle'}
 				on:click={$menu_expanded ? menu_expanded.set(false) : menu_expanded.set(true)}
@@ -85,6 +86,7 @@
 		padding: 0;
 		background-color: var(--theme-panel);
 		backdrop-filter: blur(10px);
+		-webkit-backdrop-filter: blur(10px);
 		width: calc(100vw - var(--gutter-width) * 2);
 
 		transition-property: background-color, width;
@@ -153,7 +155,6 @@
 
 	@media (min-width: 55em) {
 		.layout {
-			--top-gutter: 2rem;
 			display: grid;
 			grid-template-columns: var(--aside-width) auto;
 			grid-template-rows: var(--header-height) auto;
