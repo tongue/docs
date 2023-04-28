@@ -35,6 +35,8 @@ export const get_file_edit_url = (name: string) =>
 
 // Get the latest version of the wiki
 export async function sync() {
+	console.log('repo', REPOSITORY);
+
 	if (existsSync(REPOSITORY)) {
 		try {
 			const g = simpleGit(REPOSITORY, { timeout: { block: 2000 } });
@@ -54,7 +56,8 @@ export async function sync() {
 		}
 	} else {
 		console.log('wiki data: no local repository found, cloning.');
-		await mkdirp(DATA_DIR);
+		const hepp = await mkdirp(DATA_DIR);
+		console.log("hepp", hepp);
 		try {
 			await simpleGit(DATA_DIR).clone(`https://github.com/${GITHUB_PROJECT}.wiki.git`);
 			console.log('wiki data: cloned repository.');
