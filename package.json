@@ -12,7 +12,6 @@
 		"format": "prettier --plugin-search-dir . --write ."
 	},
 	"devDependencies": {
-		"@sveltejs/adapter-vercel": "^2.4.3",
 		"@sveltejs/kit": "^1.5.0",
 		"@types/node": "^18.15.12",
 		"@typescript-eslint/eslint-plugin": "^5.45.0",
@@ -30,6 +29,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@sveltejs/adapter-static": "^2.0.2",
 		"@types/prismjs": "^1.26.0",
 		"date-fns": "^2.29.3",
 		"glob": "^10.2.1",
