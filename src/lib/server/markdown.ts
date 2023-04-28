@@ -8,6 +8,7 @@ import { to_slug } from './data';
 import prism from 'prismjs';
 import loadLanguages from 'prismjs/components/';
 import { GITHUB_PROJECT } from '$env/static/private';
+import { base } from '$app/paths';
 
 export type PageSection = {
 	title: string | null;
@@ -20,7 +21,7 @@ function transform_wiki_links<T extends Content>(content: T): T {
 		if (content.url.startsWith(`https://github.com/${GITHUB_PROJECT}`)) {
 			const slug = content.url.split('/').pop()?.replace('.md', '');
 			if (slug) {
-				content.url = `/${to_slug(decodeURIComponent(slug))}`;
+				content.url = `${base}/${to_slug(decodeURIComponent(slug))}`;
 			}
 		}
 	}

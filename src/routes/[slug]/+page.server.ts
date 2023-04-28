@@ -7,10 +7,10 @@ import {
 	get_all_markdown_paths,
 	to_slug
 } from '$lib/server/data';
-import format from 'date-fns/format';
 import type { PageServerLoad } from './$types';
 import { error } from '@sveltejs/kit';
 import { sections } from '$lib/server/markdown';
+import { format } from 'date-fns';
 
 async function get_page(path: string) {
 	const git_log = await get_file_log(path);

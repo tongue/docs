@@ -35,6 +35,8 @@ export const get_file_edit_url = (name: string) =>
 
 // Get the latest version of the wiki
 export async function sync() {
+	const v = await simpleGit().version();
+	console.log('version', v);
 	if (existsSync(REPOSITORY)) {
 		try {
 			const g = simpleGit(REPOSITORY, { timeout: { block: 2000 } });
